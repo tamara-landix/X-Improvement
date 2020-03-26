@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.pan_principal = new System.Windows.Forms.Panel();
-            this.pan_filhos = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lbl_filhos = new System.Windows.Forms.Label();
             this.pan_acompanhante = new System.Windows.Forms.Panel();
             this.txt_acompanhante = new System.Windows.Forms.TextBox();
             this.lbl_acompanhante = new System.Windows.Forms.Label();
@@ -45,8 +42,6 @@
             this.pan_botoes = new System.Windows.Forms.Panel();
             this.btn_confirmar = new System.Windows.Forms.Button();
             this.pan_principal.SuspendLayout();
-            this.pan_filhos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.pan_acompanhante.SuspendLayout();
             this.pan_email.SuspendLayout();
             this.pan_nome.SuspendLayout();
@@ -56,45 +51,14 @@
             // pan_principal
             // 
             this.pan_principal.BackColor = System.Drawing.SystemColors.Window;
-            this.pan_principal.Controls.Add(this.pan_filhos);
             this.pan_principal.Controls.Add(this.pan_acompanhante);
             this.pan_principal.Controls.Add(this.pan_email);
             this.pan_principal.Controls.Add(this.pan_nome);
             this.pan_principal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pan_principal.Location = new System.Drawing.Point(0, 0);
             this.pan_principal.Name = "pan_principal";
-            this.pan_principal.Size = new System.Drawing.Size(516, 127);
+            this.pan_principal.Size = new System.Drawing.Size(516, 102);
             this.pan_principal.TabIndex = 0;
-            // 
-            // pan_filhos
-            // 
-            this.pan_filhos.BackColor = System.Drawing.SystemColors.Window;
-            this.pan_filhos.Controls.Add(this.numericUpDown1);
-            this.pan_filhos.Controls.Add(this.lbl_filhos);
-            this.pan_filhos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pan_filhos.Location = new System.Drawing.Point(0, 72);
-            this.pan_filhos.Name = "pan_filhos";
-            this.pan_filhos.Size = new System.Drawing.Size(516, 24);
-            this.pan_filhos.TabIndex = 5;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.numericUpDown1.Location = new System.Drawing.Point(146, 0);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 20);
-            this.numericUpDown1.TabIndex = 1;
-            // 
-            // lbl_filhos
-            // 
-            this.lbl_filhos.AutoSize = true;
-            this.lbl_filhos.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbl_filhos.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_filhos.Location = new System.Drawing.Point(0, 0);
-            this.lbl_filhos.Name = "lbl_filhos";
-            this.lbl_filhos.Size = new System.Drawing.Size(146, 16);
-            this.lbl_filhos.TabIndex = 0;
-            this.lbl_filhos.Text = "Quantidade de Filhos:";
             // 
             // pan_acompanhante
             // 
@@ -116,6 +80,7 @@
             this.txt_acompanhante.Name = "txt_acompanhante";
             this.txt_acompanhante.Size = new System.Drawing.Size(348, 21);
             this.txt_acompanhante.TabIndex = 1;
+            this.txt_acompanhante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
             // lbl_acompanhante
             // 
@@ -149,6 +114,7 @@
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(365, 21);
             this.txt_email.TabIndex = 1;
+            this.txt_email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
             // lbl_sufixoEmail
             // 
@@ -192,6 +158,7 @@
             this.txt_nome.Name = "txt_nome";
             this.txt_nome.Size = new System.Drawing.Size(462, 21);
             this.txt_nome.TabIndex = 1;
+            this.txt_nome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
             // lbl_nome
             // 
@@ -209,7 +176,7 @@
             this.pan_botoes.BackColor = System.Drawing.SystemColors.Window;
             this.pan_botoes.Controls.Add(this.btn_confirmar);
             this.pan_botoes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pan_botoes.Location = new System.Drawing.Point(0, 98);
+            this.pan_botoes.Location = new System.Drawing.Point(0, 73);
             this.pan_botoes.Name = "pan_botoes";
             this.pan_botoes.Size = new System.Drawing.Size(516, 29);
             this.pan_botoes.TabIndex = 1;
@@ -232,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 127);
+            this.ClientSize = new System.Drawing.Size(516, 102);
             this.Controls.Add(this.pan_botoes);
             this.Controls.Add(this.pan_principal);
             this.MaximizeBox = false;
@@ -243,9 +210,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadastro";
             this.pan_principal.ResumeLayout(false);
-            this.pan_filhos.ResumeLayout(false);
-            this.pan_filhos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.pan_acompanhante.ResumeLayout(false);
             this.pan_acompanhante.PerformLayout();
             this.pan_email.ResumeLayout(false);
@@ -260,9 +224,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pan_principal;
-        private System.Windows.Forms.Panel pan_filhos;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label lbl_filhos;
         private System.Windows.Forms.Panel pan_acompanhante;
         private System.Windows.Forms.TextBox txt_acompanhante;
         private System.Windows.Forms.Label lbl_acompanhante;

@@ -53,6 +53,7 @@
             this.dgv_confirmados.AllowUserToAddRows = false;
             this.dgv_confirmados.AllowUserToDeleteRows = false;
             this.dgv_confirmados.AllowUserToResizeRows = false;
+            this.dgv_confirmados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_confirmados.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv_confirmados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_confirmados.Dock = System.Windows.Forms.DockStyle.Fill;
