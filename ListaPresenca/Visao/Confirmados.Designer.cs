@@ -1,4 +1,4 @@
-﻿namespace ListaPresenca.Visao
+﻿namespace Visao
 {
     partial class Confirmados
     {

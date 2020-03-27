@@ -1,21 +1,13 @@
-﻿using System;
+﻿using BD;
+using System;
 using System.Data;
-using System.Data.SQLite;
-using System.IO;
+using System.Data.Common;
 using System.Windows.Forms;
 
-namespace ListaPresenca.Visao
+namespace Visao
 {
     public partial class Confirmados : Form
     {
-        #region Variáveis
-
-        public static string pathDatabase = Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName + "\\database\\landix_database.db3";
-        public static SQLiteConnection Conexao;
-        public static string strConn = "Data Source=" + pathDatabase + "";
-
-        #endregion Variáveis
-
         #region Construtores
 
         /// <summary>
@@ -25,7 +17,6 @@ namespace ListaPresenca.Visao
         {
             InitializeComponent();
 
-            ConectaBD();
             CarregaGrid();
         }
 
@@ -84,7 +75,7 @@ namespace ListaPresenca.Visao
         {
             try
             {
-                var cmd = Conexao.CreateCommand();
+                DbCommand cmd = Conexao.Connection.CreateCommand();
                 cmd.CommandText = " DELETE FROM CONFIRMADOS WHERE EMAIL = '" + email + "' ";
 
                 cmd.ExecuteNonQuery();
@@ -103,41 +94,21 @@ namespace ListaPresenca.Visao
         /// </summary>
         private void CarregaGrid()
         {
-            DataTable dt = new DataTable();
             string sql = "SELECT NOME, EMAIL, ACOMPANHANTE FROM CONFIRMADOS";
 
-            SQLiteDataAdapter da = new SQLiteDataAdapter(sql, strConn);
-            da.Fill(dt);
+            DbCommand cmd = Conexao.Connection.CreateCommand();
+            cmd.CommandText = sql;
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
 
             dgv_confirmados.DataSource = dt.DefaultView;
 
             dgv_confirmados.Columns[0].HeaderText = "Nome";
             dgv_confirmados.Columns[1].HeaderText = "E-mail";
             dgv_confirmados.Columns[2].HeaderText = "Nome do Acompanhante";
-        }
-
-        /// <summary>
-        /// Conecta com o banco de dados
-        /// </summary>
-        private void ConectaBD()
-        {
-            try
-            {
-                Conexao = new SQLiteConnection("Data Source=" + pathDatabase + "");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro :" + ex.Message);
-            }
-            finally
-            {
-                if (Conexao.State == ConnectionState.Open)
-                {
-                    Conexao.Close();
-                }
-            }
-
-            Conexao.Open();
         }
 
         #endregion Métodos

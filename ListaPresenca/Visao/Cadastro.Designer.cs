@@ -1,4 +1,4 @@
-﻿namespace ListaPresenca
+﻿namespace Visao
 {
     partial class Cadastro
     {

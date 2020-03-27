@@ -1,7 +1,8 @@
-﻿using System;
+﻿using BD;
+using System;
 using System.Windows.Forms;
 
-namespace ListaPresenca.Visao
+namespace Visao
 {
     public partial class Principal : Form
     {
@@ -13,6 +14,8 @@ namespace ListaPresenca.Visao
         public Principal()
         {
             InitializeComponent();
+
+            Conexao.Open();
         }
 
         #endregion Construtores

@@ -1,4 +1,4 @@
-﻿using ListaPresenca.Visao;
+﻿using Visao;
 using System;
 using System.Windows.Forms;
 

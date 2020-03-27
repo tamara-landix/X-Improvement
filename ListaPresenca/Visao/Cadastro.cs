@@ -1,18 +1,18 @@
-﻿using System;
+﻿using BD;
+using System;
 using System.Data;
-using System.Data.SQLite;
-using System.IO;
+using System.Data.Common;
 using System.Windows.Forms;
 
-namespace ListaPresenca
+namespace Visao
 {
     public partial class Cadastro : Form
     {
         #region Variáveis
 
-        public static string pathDatabase = Directory.GetParent(Directory.GetParent(Application.StartupPath).FullName).FullName + "\\database\\landix_database.db3";
-        public static SQLiteConnection Conexao;
-        public static string strConn = "Data Source=" + pathDatabase + "";
+        /// <summary>
+        /// Define se é uma edição de cadastro
+        /// </summary>
         public bool ehEdicao = false;
 
         #endregion Variáveis
@@ -26,8 +26,6 @@ namespace ListaPresenca
         {
             InitializeComponent();
 
-            ConectaBD();
-
             this.Text = "Inclusão";
         }
 
@@ -38,8 +36,6 @@ namespace ListaPresenca
         public Cadastro(string email)
         {
             InitializeComponent();
-
-            ConectaBD();
 
             this.Text = "Edição";
             ehEdicao = true;
@@ -125,7 +121,7 @@ namespace ListaPresenca
             {
                 string email = (txt_email.Text + lbl_sufixoEmail.Text).ToLower();
 
-                var cmd = Conexao.CreateCommand();
+                DbCommand cmd = Conexao.Connection.CreateCommand();
 
                 if (ehEdicao)
                 {
@@ -156,41 +152,21 @@ namespace ListaPresenca
         /// <param name="email"></param>
         private void AbreEdicao(string email)
         {
-            DataTable dt = new DataTable();
             string sql = "SELECT NOME, REPLACE(EMAIL, '" + lbl_sufixoEmail.Text + "', '') AS EMAIL, ACOMPANHANTE FROM CONFIRMADOS WHERE EMAIL = '" + email + "'";
 
-            SQLiteDataAdapter da = new SQLiteDataAdapter(sql, strConn);
-            da.Fill(dt);
+            DbCommand cmd = Conexao.Connection.CreateCommand();
+            cmd.CommandText = sql;
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
 
             txt_nome.DataBindings.Add("Text", dt, "NOME");
             txt_email.DataBindings.Add("Text", dt, "EMAIL");
             txt_acompanhante.DataBindings.Add("Text", dt, "ACOMPANHANTE");
 
             txt_email.Enabled = false;
-        }
-
-        /// <summary>
-        /// Conecta com o banco de dados
-        /// </summary>
-        private void ConectaBD()
-        {
-            try
-            {
-                Conexao = new SQLiteConnection(strConn);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro :" + ex.Message);
-            }
-            finally
-            {
-                if (Conexao.State == ConnectionState.Open)
-                {
-                    Conexao.Close();
-                }
-            }
-
-            Conexao.Open();
         }
 
         #endregion Métodos

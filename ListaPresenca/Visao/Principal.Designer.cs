@@ -1,4 +1,4 @@
-﻿namespace ListaPresenca.Visao
+﻿namespace Visao
 {
     partial class Principal
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.pan_principal = new System.Windows.Forms.Panel();
             this.btn_lista = new System.Windows.Forms.Button();
             this.btn_confirmarPresenca = new System.Windows.Forms.Button();
@@ -88,8 +89,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 280);
             this.Controls.Add(this.pan_principal);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Landix 21 Anos";
             this.pan_principal.ResumeLayout(false);
