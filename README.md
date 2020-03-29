@@ -13,4 +13,7 @@ Para isso, utilizamos um banco de dados SQL Server que está disponível no serv
 
 A premissa para executar o programa é estar na rede da Landix, seja fisicamente ou por VPN, pois não é possível utilizar o sistema sem acesso ao banco de dados LDXPROJETO.
 
+Caso queira compilar o projeto, será necessário instalar o Visual Studio.
+Caso queira somente executá-lo, entre na pasta "Executável" e execute o arquivo ListaPresenca.exe
+
 Qualquer dúvida, estamos à disposição.
