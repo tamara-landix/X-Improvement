@@ -1,4 +1,6 @@
-﻿using System.Data.Common;
+﻿using System.Collections.Generic;
+using System.Data.Common;
+using System.Windows.Forms;
 
 namespace BD
 {
@@ -15,7 +17,7 @@ namespace BD
         /// Abre a conexão com o banco de dados
         /// </summary>
         /// <returns>True -> Conexão aberta com sucesso</returns>
-        public static bool Open()
+        private static bool Open()
         {
             try
             {
@@ -29,6 +31,43 @@ namespace BD
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Trata a abertura de conexão com o banco de dados
+        /// </summary>
+        /// <returns>True -> Conexão aberta</returns>
+        public static bool AbrirConexao()
+        {
+            if (!Open())
+            {
+                List<string> parametros = new List<string>();
+
+                foreach (var item in Connection.ConnectionString.Split(';'))
+                {
+                    if (!item.Contains("Password"))
+                    {
+                        parametros.Add(item);
+                    }
+                }
+
+                string dadosConexao = string.Empty;
+
+                foreach (var item in parametros)
+                {
+                    dadosConexao = string.Concat(dadosConexao, "\n", item);
+                }
+
+                string mensage = string.Concat("Não foi possível conectar ao banco de dados.", "\n",
+                                               "\n", "Por favor verifique a disponibilidade do banco:", "\n",
+                                               dadosConexao);
+
+                MessageBox.Show(mensage, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+
+            return true;
         }
     }
 }

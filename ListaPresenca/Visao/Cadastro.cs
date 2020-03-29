@@ -108,7 +108,7 @@ namespace Visao
                 return false;
             }
 
-            if (this.VerificaConfirmacao(txt_email.Text + lbl_sufixoEmail.Text))
+            if (!ehEdicao && this.VerificaConfirmacao(txt_email.Text + lbl_sufixoEmail.Text))
             {
                 MessageBox.Show(string.Concat("Sua presença já foi confirmada anteriormente.", "\n", "Caso queira alterar, entre em contato com gente@landix.com.br"), "Alerta...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txt_email.Focus();
@@ -126,7 +126,7 @@ namespace Visao
         {
             try
             {
-                string email = (txt_email.Text + lbl_sufixoEmail.Text).ToLower();
+                string email = (txt_email.Text + lbl_sufixoEmail.Text).ToLower().Trim();
 
                 DbCommand cmd = Conexao.Connection.CreateCommand();
 

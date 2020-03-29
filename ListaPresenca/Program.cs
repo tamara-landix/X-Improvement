@@ -16,15 +16,7 @@ namespace ListaPresenca
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (!Conexao.Open())
-            {
-                string mensage = string.Concat("Não foi possível conectar ao banco de dados.", "\n",
-                                               "\n", "Por favor verifique a disponibilidade do banco:", "\n",
-                                               "\n", Conexao.Connection.ConnectionString.Replace(";", "\n"));
-
-                MessageBox.Show(mensage, "Erro...", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+            if (Conexao.AbrirConexao())
             {
                 Application.Run(new Principal());
             }
