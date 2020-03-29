@@ -33,6 +33,7 @@
             this.pan_botoes = new System.Windows.Forms.Panel();
             this.btn_excluir = new System.Windows.Forms.Button();
             this.btn_alterar = new System.Windows.Forms.Button();
+            this.btn_exportar = new System.Windows.Forms.Button();
             this.pan_principal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_confirmados)).BeginInit();
             this.pan_botoes.SuspendLayout();
@@ -67,6 +68,7 @@
             // pan_botoes
             // 
             this.pan_botoes.BackColor = System.Drawing.SystemColors.Window;
+            this.pan_botoes.Controls.Add(this.btn_exportar);
             this.pan_botoes.Controls.Add(this.btn_excluir);
             this.pan_botoes.Controls.Add(this.btn_alterar);
             this.pan_botoes.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -103,6 +105,20 @@
             this.btn_alterar.UseVisualStyleBackColor = false;
             this.btn_alterar.Click += new System.EventHandler(this.btn_alterar_Click);
             // 
+            // btn_exportar
+            // 
+            this.btn_exportar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(158)))), ((int)(((byte)(217)))));
+            this.btn_exportar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_exportar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_exportar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_exportar.Location = new System.Drawing.Point(563, 0);
+            this.btn_exportar.Name = "btn_exportar";
+            this.btn_exportar.Size = new System.Drawing.Size(91, 29);
+            this.btn_exportar.TabIndex = 3;
+            this.btn_exportar.Text = "Exportar Lista";
+            this.btn_exportar.UseVisualStyleBackColor = false;
+            this.btn_exportar.Click += new System.EventHandler(this.btn_exportar_Click);
+            // 
             // Confirmados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,5 +145,6 @@
         private System.Windows.Forms.Panel pan_botoes;
         private System.Windows.Forms.Button btn_excluir;
         private System.Windows.Forms.Button btn_alterar;
+        private System.Windows.Forms.Button btn_exportar;
     }
 }

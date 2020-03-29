@@ -33,8 +33,8 @@
             this.txt_acompanhante = new System.Windows.Forms.TextBox();
             this.lbl_acompanhante = new System.Windows.Forms.Label();
             this.pan_email = new System.Windows.Forms.Panel();
-            this.txt_email = new System.Windows.Forms.TextBox();
             this.lbl_sufixoEmail = new System.Windows.Forms.Label();
+            this.txt_email = new System.Windows.Forms.TextBox();
             this.lbl_email = new System.Windows.Forms.Label();
             this.pan_nome = new System.Windows.Forms.Panel();
             this.txt_nome = new System.Windows.Forms.TextBox();
@@ -77,8 +77,9 @@
             this.txt_acompanhante.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.txt_acompanhante.Location = new System.Drawing.Point(168, 0);
             this.txt_acompanhante.MaxLength = 100;
+            this.txt_acompanhante.Multiline = true;
             this.txt_acompanhante.Name = "txt_acompanhante";
-            this.txt_acompanhante.Size = new System.Drawing.Size(348, 21);
+            this.txt_acompanhante.Size = new System.Drawing.Size(348, 24);
             this.txt_acompanhante.TabIndex = 1;
             this.txt_acompanhante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
@@ -96,8 +97,8 @@
             // pan_email
             // 
             this.pan_email.BackColor = System.Drawing.SystemColors.Window;
-            this.pan_email.Controls.Add(this.txt_email);
             this.pan_email.Controls.Add(this.lbl_sufixoEmail);
+            this.pan_email.Controls.Add(this.txt_email);
             this.pan_email.Controls.Add(this.lbl_email);
             this.pan_email.Dock = System.Windows.Forms.DockStyle.Top;
             this.pan_email.Location = new System.Drawing.Point(0, 24);
@@ -105,27 +106,26 @@
             this.pan_email.Size = new System.Drawing.Size(516, 24);
             this.pan_email.TabIndex = 3;
             // 
-            // txt_email
-            // 
-            this.txt_email.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txt_email.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_email.Location = new System.Drawing.Point(54, 0);
-            this.txt_email.MaxLength = 86;
-            this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(365, 21);
-            this.txt_email.TabIndex = 1;
-            this.txt_email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
-            // 
             // lbl_sufixoEmail
             // 
             this.lbl_sufixoEmail.AutoSize = true;
-            this.lbl_sufixoEmail.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbl_sufixoEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_sufixoEmail.Location = new System.Drawing.Point(419, 0);
+            this.lbl_sufixoEmail.Location = new System.Drawing.Point(203, 3);
             this.lbl_sufixoEmail.Name = "lbl_sufixoEmail";
             this.lbl_sufixoEmail.Size = new System.Drawing.Size(97, 16);
             this.lbl_sufixoEmail.TabIndex = 2;
             this.lbl_sufixoEmail.Text = "@landix.com.br";
+            // 
+            // txt_email
+            // 
+            this.txt_email.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txt_email.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_email.Location = new System.Drawing.Point(55, 0);
+            this.txt_email.MaxLength = 86;
+            this.txt_email.Name = "txt_email";
+            this.txt_email.Size = new System.Drawing.Size(148, 21);
+            this.txt_email.TabIndex = 1;
+            this.txt_email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_KeyPress);
             // 
             // lbl_email
             // 
@@ -134,9 +134,9 @@
             this.lbl_email.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_email.Location = new System.Drawing.Point(0, 0);
             this.lbl_email.Name = "lbl_email";
-            this.lbl_email.Size = new System.Drawing.Size(51, 16);
+            this.lbl_email.Size = new System.Drawing.Size(55, 16);
             this.lbl_email.TabIndex = 0;
-            this.lbl_email.Text = "E-mail:";
+            this.lbl_email.Text = "E-mail: ";
             // 
             // pan_nome
             // 

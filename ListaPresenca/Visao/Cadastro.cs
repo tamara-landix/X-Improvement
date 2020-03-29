@@ -49,7 +49,7 @@ namespace Visao
 
         /// <summary>Evento executado ao acionar o botão confirmar</summary>
         /// <param name="sender">Referência ao controle que disparou o evento</param>
-        /// <param name="e">Armazena informações do evento que foi acionado</param></param>
+        /// <param name="e">Armazena informações do evento que foi acionado</param>
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
             if (Validacao())
@@ -65,7 +65,7 @@ namespace Visao
 
         /// <summary>Evento executado ao digitar nos campos de texto</summary>
         /// <param name="sender">Referência ao controle que disparou o evento</param>
-        /// <param name="e">Armazena informações do evento que foi acionado</param></param>
+        /// <param name="e">Armazena informações do evento que foi acionado</param>
         private void txt_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = false;
@@ -104,6 +104,13 @@ namespace Visao
             if (txt_email.Text.Contains("@"))
             {
                 MessageBox.Show("E-mail inválido:\n" + txt_email.Text + lbl_sufixoEmail.Text, "Alerta...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txt_email.Focus();
+                return false;
+            }
+
+            if (this.VerificaConfirmacao(txt_email.Text + lbl_sufixoEmail.Text))
+            {
+                MessageBox.Show(string.Concat("Sua presença já foi confirmada anteriormente.", "\n", "Caso queira alterar, entre em contato com gente@landix.com.br"), "Alerta...", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txt_email.Focus();
                 return false;
             }
@@ -167,6 +174,31 @@ namespace Visao
             txt_acompanhante.DataBindings.Add("Text", dt, "ACOMPANHANTE");
 
             txt_email.Enabled = false;
+        }
+
+        /// <summary>
+        /// Verifica se já existe confirmação para o e-mail informado
+        /// </summary>
+        /// <param name="email">E-mail a ser buscado</param>
+        /// <returns>True -> Confirmação encontrada</returns>
+        private bool VerificaConfirmacao(string email)
+        {
+            string sql = "SELECT * FROM CONFIRMADOS WHERE EMAIL = '" + email + "'";
+
+            DbCommand cmd = Conexao.Connection.CreateCommand();
+            cmd.CommandText = sql;
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         #endregion Métodos

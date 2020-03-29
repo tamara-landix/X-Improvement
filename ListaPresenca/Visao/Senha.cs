@@ -21,7 +21,7 @@ namespace Visao
 
         /// <summary>Evento executado ao acionar o botão acessar</summary>
         /// <param name="sender">Referência ao controle que disparou o evento</param>
-        /// <param name="e">Armazena informações do evento que foi acionado</param></param>
+        /// <param name="e">Armazena informações do evento que foi acionado</param>
         private void btn_acessar_Click(object sender, EventArgs e)
         {
             ValidaSenha();
@@ -29,7 +29,7 @@ namespace Visao
 
         /// <summary>Evento executado ao digitar no campo de senha</summary>
         /// <param name="sender">Referência ao controle que disparou o evento</param>
-        /// <param name="e">Armazena informações do evento que foi acionado</param></param>
+        /// <param name="e">Armazena informações do evento que foi acionado</param>
         private void txt_senha_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
