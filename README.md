@@ -2,7 +2,7 @@
 
 O desafio proposto solicita a criação de um sistema em que seja possível confirmar a presença na festa de 21 da Landix. Além disso, a equipe gente poderá visualizar todos os confirmados, assim como alterar/excluir alguma confirmação caso necessário.
 
-O nome da nossa equipe é: *TTP*
+O nome da nossa equipe é: TTP
 Componentes do grupo:
 - Tamara Ayres
 - Thiago Sousa
