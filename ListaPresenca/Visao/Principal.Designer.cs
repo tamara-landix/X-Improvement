@@ -90,6 +90,7 @@
             this.ClientSize = new System.Drawing.Size(609, 280);
             this.Controls.Add(this.pan_principal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Landix 21 Anos";
